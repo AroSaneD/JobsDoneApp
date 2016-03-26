@@ -56,46 +56,12 @@
 	</div>-->
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="scripts/platformOverrides.js"></script>
+	<script type="text/javascript" src="scripts/CustomMedia.js"></script>
 	<script type="text/javascript" src="scripts/index.js"></script>
 
 	<div class="Button-Holder">
-		<input type="button" value="JOB'S DONE" class="btn btn-default btn-circle Centered-Button" onclick="btnPress()" />
+		<input type="button" value="JOB'S DONE" class="btn btn-default btn-circle Centered-Button" onclick="playMedia()" />
 	</div>
-
-<script>
-	
-
-	var my_media;
-	var src = "/media/JobsDone.mp3";
-	if (device.platform == device.android) {
-		src = "/android_asset/www" + src;
-	}
-	my_media = new Media(src, loadSucceeded, loadFailed, onStatus);
-
-	var btnPress = function () {
-		playMedia();
-	}
-
-	var playMedia = function () {
-		my_media.play();
-
-	}
-
-	var loadSucceeded = function () {
-		alert("Succeeded to load media");
-	}
-
-	var loadFailed = function () {
-		alert("Failed to load media");
-	}
-
-	var onStatus = function (status) {
-		if (status == Media.MEDIA_STOPPED) {
-			my_media.stop();
-			alert("Media stopped");
-		}
-	}
-</script>
 
 </body>
 </html>
