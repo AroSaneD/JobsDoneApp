@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--
+		Customize the content security policy in the meta tag below as needed. Add 'unsafe-inline' to default-src to enable inline JavaScript.
+		For details, see http://go.microsoft.com/fwlink/?LinkID=617521
+	-->
+	<!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">-->
+
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+	<!--<link rel="stylesheet" type="text/css" href="css/index.css">-->
+	<title>JobsDoneApp</title>
+
+	<style>
+		html {
+			width: 100%;
+			height: 100%;
+		}
+
+		body {
+			width: 100%;
+			height: 100%;
+		}
+
+		.Button-Holder {
+			width: 100%;
+			height: 100%;
+			position: relative;
+			text-align: center;
+		}
+
+		.Centered-Button {
+			position: relative;
+			top: 50%;
+			-moz-transform: translateY(-50%);
+			-ms-transform: translateY(-50%);
+			-o-transform: translateY(-50%);
+			-webkit-transform: translateY(-50%);
+			transform: translateY(-50%);
+			margin: auto auto;
+			color: white;
+			background-color: green;
+			font-size: 30px;
+			border: none;
+			width: 300px;
+			height: 300px;
+			border-radius: 150px;
+		}
+	</style>
+</head>
+<body>
+	<!--<div class="app">
+		<p id="deviceready" class="event">Connecting to Device</p>
+	</div>-->
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript" src="scripts/platformOverrides.js"></script>
+	<script type="text/javascript" src="scripts/index.js"></script>
+
+	<div class="Button-Holder">
+		<input type="button" value="JOB'S DONE" class="btn btn-default btn-circle Centered-Button" onclick="btnPress()" />
+	</div>
+
+<script>
+	
+
+	var my_media;
+	var src = "/media/JobsDone.mp3";
+	if (device.platform == device.android) {
+		src = "/android_asset/www" + src;
+	}
+	my_media = new Media(src, loadSucceeded, loadFailed, onStatus);
+
+	var btnPress = function () {
+		playMedia();
+	}
+
+	var playMedia = function () {
+		my_media.play();
+
+	}
+
+	var loadSucceeded = function () {
+		alert("Succeeded to load media");
+	}
+
+	var loadFailed = function () {
+		alert("Failed to load media");
+	}
+
+	var onStatus = function (status) {
+		if (status == Media.MEDIA_STOPPED) {
+			my_media.stop();
+			alert("Media stopped");
+		}
+	}
+</script>
+
+</body>
+</html>
